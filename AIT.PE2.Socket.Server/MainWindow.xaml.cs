@@ -38,32 +38,56 @@ namespace AIT.PE2.Socket.Server
         #endregion
         private void CmbIPs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //SaveConfig();
 
         }
 
         private void CmbPorts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //SaveConfig();
 
         }
 
         private void txtPath_SelectionChanged(object sender, RoutedEventArgs e)
         {
+            //SaveConfig();
 
         }
 
         private void BtnStartServer_Click(object sender, RoutedEventArgs e)
         {
+            btnStartServer.Visibility = Visibility.Hidden;
+            btnStopServer.Visibility = Visibility.Visible;
+            cmbIPs.IsEnabled = false;
+            cmbPorts.IsEnabled = false;
+            txtPath.IsEnabled = false;
+            grdUsers.ItemsSource = null;
+            //DisplayData();
 
+            //StartTheServer();
+            //StartListening();
         }
 
         private void BtnStopServer_Click(object sender, RoutedEventArgs e)
         {
+            btnStartServer.Visibility = Visibility.Visible;
+            btnStopServer.Visibility = Visibility.Hidden;
+            cmbIPs.IsEnabled = true;
+            cmbPorts.IsEnabled = true;
+            txtPath.IsEnabled = true;
 
+            //CloseTheServer();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            directoryService = new DirectoryService();
+            //StartupConfig();
+        }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            BtnStopServer_Click(null, null);
         }
     }
 }
