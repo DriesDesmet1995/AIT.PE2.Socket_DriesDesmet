@@ -24,5 +24,35 @@ namespace AIT.PE2.Socket.Server
         {
             InitializeComponent();
         }
+
+        private void CmbIPs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void CmbPorts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void txtPath_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnStartServer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnStopServer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

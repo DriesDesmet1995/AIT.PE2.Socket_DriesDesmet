@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AIT.PE2.Socket.Server"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
+        <GroupBox Header="Server configuration" HorizontalAlignment="Left" Height="153" Margin="10,10,0,0" VerticalAlignment="Top" Width="770" >
+            <Grid HorizontalAlignment="Left" Width="770" Height="155">
+                <ComboBox x:Name="cmbIPs" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="46,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CmbIPs_SelectionChanged"/>
+                <Label Content="IP : " FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Height="28" Margin="10,10,0,0" VerticalAlignment="Top" Width="31"/>
+                <Label Content="Port : " FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Height="28" Margin="210,7,0,0" VerticalAlignment="Top" Width="57"/>
+                <ComboBox x:Name="cmbPorts" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="267,9,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CmbPorts_SelectionChanged"/>
+                <Button x:Name="btnStartServer" Content="START" Background="ForestGreen" Foreground="White" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="20,56,0,0" VerticalAlignment="Top" Height="28" Width="81" Click="BtnStartServer_Click"/>
+                <Button x:Name="btnStopServer" Content="STOP" Background="Tomato" Foreground="White" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="106,56,0,0" VerticalAlignment="Top" Height="28" Width="81" Click="BtnStopServer_Click"/>
+                <Label Content="Path : " FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Height="28" Margin="434,7,0,0" VerticalAlignment="Top" Width="58"/>
+                <TextBox x:Name="txtPath" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="495,13,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="txtPath_SelectionChanged"/>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Communications" HorizontalAlignment="Center" Height="279" Margin="0,135,0,0" VerticalAlignment="Top" Width="784"  >
+            <DataGrid x:Name="grdUsers"/>
+        </GroupBox>
 
     </Grid>
 </Window>
