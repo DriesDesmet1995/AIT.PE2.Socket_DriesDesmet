@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIT.PE2.Socket.Server", "AIT.PE2.Socket.Server\AIT.PE2.Socket.Server.csproj", "{AE2FB48C-CA26-465D-909C-9BEB85C6B8F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIT.PE2.Socket.Core", "AIT.PE2.Socket.Core\AIT.PE2.Socket.Core.csproj", "{C7841392-A85A-4DBB-9A48-C01107DB30E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE2FB48C-CA26-465D-909C-9BEB85C6B8F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE2FB48C-CA26-465D-909C-9BEB85C6B8F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE2FB48C-CA26-465D-909C-9BEB85C6B8F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE2FB48C-CA26-465D-909C-9BEB85C6B8F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7841392-A85A-4DBB-9A48-C01107DB30E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7841392-A85A-4DBB-9A48-C01107DB30E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7841392-A85A-4DBB-9A48-C01107DB30E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7841392-A85A-4DBB-9A48-C01107DB30E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {858F7A1D-A25B-4ACE-9DC4-8E7DB6FC0468}
+	EndGlobalSection
+EndGlobal
