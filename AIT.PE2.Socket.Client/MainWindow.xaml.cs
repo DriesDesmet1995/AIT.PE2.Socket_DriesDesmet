@@ -16,6 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.Sockets;
+using AIT.PE2.Socket.Core.Entities;
+using Newtonsoft.Json;
 
 namespace AIT.PE2.Socket.Client
 {
@@ -149,6 +151,34 @@ namespace AIT.PE2.Socket.Client
             {
                 serverSocket = null;
                 return "";
+            }
+        }
+
+        private void SendLocalInformation()
+        {
+            string foldername = lblFolderName.Content.ToString();
+            string folderPath = lblPath.Content.ToString();
+            string parentPath = lblParent.Content.ToString();
+            ICollection<FTFile> filesInFolder = new List<FTFile>();
+
+            FTFolder fTFolder = new FTFolder(foldername,folderPath,parentPath,filesInFolder);
+
+            string json = JsonConvert.SerializeObject(fTFolder);
+
+            string message = "PUT|" + json + "##EOM";
+            string response = SendMessageToServer(message);
+            if (response != "")
+            {
+                response = response.Replace("##EOM", "").Trim().ToUpper();
+                directoryService.Folders = JsonConvert.DeserializeObject<List<FTFolder>>(response);
+
+                DoVisuals(true);
+                DisplayLocations();
+            }
+            else
+            {
+                MessageBox.Show("Server unreachable");
+                DoVisuals(false);
             }
         }
     }
