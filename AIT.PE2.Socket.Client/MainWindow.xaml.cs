@@ -71,7 +71,6 @@ namespace AIT.PE2.Socket.Client
             lblFolderName.Content = path.Substring(path.LastIndexOf('\\') + 1); ;
             lblPath.Content = path;
             lblParent.Content = parent;
-
             GetAllFiles(path);
             SendLocalInformation();
 
@@ -79,7 +78,14 @@ namespace AIT.PE2.Socket.Client
 
         private void lbFiles_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            string path = lbFiles.SelectedItem.ToString();
+            long length = new System.IO.FileInfo(path).Length;
+            
 
+            lblFileName.Content = path.Substring(path.LastIndexOf('\\') + 1); ;
+            lblFileSize.Content = length.ToString() + " KB";
+            lblDate.Content= File.GetCreationTime(path).ToString();
+            lblPathFile.Content = path;
         }
 
         private void btnUpload_Click(object sender, RoutedEventArgs e)
@@ -227,10 +233,10 @@ namespace AIT.PE2.Socket.Client
         public void GetAllFolders(string path)
 
         {
-            lbFolders.Items.Clear();
-
             string[] dirs = Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly);
 
+
+            lbFolders.Items.Clear();
             foreach (var dir in dirs)
             {
                 FileInfo info = new FileInfo(dir);
