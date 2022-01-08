@@ -48,6 +48,7 @@ namespace AIT.PE2.Socket.Client
             SaveConfig();
             SendLocalInformation();
             GetAllFiles(lblDirectory.Content.ToString());
+            GetAllFolders(lblDirectory.Content.ToString());
 
         }
 
@@ -212,6 +213,18 @@ namespace AIT.PE2.Socket.Client
             {
                 FileInfo info = new FileInfo(file);
                 lbFiles.Items.Add(file);
+            }
+        }
+
+        public void GetAllFolders(string path)
+
+        {
+            string[] dirs = Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly);
+
+            foreach (var dir in dirs)
+            {
+                FileInfo info = new FileInfo(dir);
+                lbFolders.Items.Add(dir);
             }
         }
     }
