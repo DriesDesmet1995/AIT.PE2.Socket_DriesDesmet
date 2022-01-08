@@ -24,5 +24,35 @@ namespace AIT.PE2.Socket.Client
         {
             InitializeComponent();
         }
+
+        private void btnStartServer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnNavigate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void lbFolders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void lbFiles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btnUpload_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
