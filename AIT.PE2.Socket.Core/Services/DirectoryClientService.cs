@@ -9,11 +9,10 @@ namespace AIT.PE2.Socket.Core.Services
 {
     public class DirectoryClientService
     {
-        public List<FTFolder> Folders { get; set; }
-
-        public DirectoryClientService(List<FTFolder> folders)
+        public List<FTFolder> Locations { get; set; }
+        public DirectoryClientService()
         {
-            Folders = folders;
+            Locations = new List<FTFolder>();
         }
     }
 }
