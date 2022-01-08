@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net.Sockets;
 
 namespace AIT.PE2.Socket.Client
 {
@@ -113,6 +114,42 @@ namespace AIT.PE2.Socket.Client
             int port = int.Parse(cmbPorts.SelectedItem.ToString());
             string path = txtUserName.Text;
             AppConfig.WriteConfig(ip, port, path);
+        }
+
+        private string SendMessageToServer(string message)
+        {
+            if (serverSocket == null)
+            {
+                IPAddress serverIP = IPAddress.Parse(cmbIPs.Text);
+                int serverPort = int.Parse(cmbPorts.SelectedItem.ToString());
+                serverEndpoint = new IPEndPoint(serverIP, serverPort);
+                serverSocket = new System.Net.Sockets.Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            }
+            try
+            {
+                serverSocket.Connect(serverEndpoint);
+                byte[] outMessage = Encoding.ASCII.GetBytes(message);
+                byte[] inMessage = new byte[1024];
+
+                serverSocket.Send(outMessage);
+                string response = "";
+                while (true)
+                {
+                    int responseLength = serverSocket.Receive(inMessage);
+                    response += Encoding.ASCII.GetString(inMessage, 0, responseLength).ToUpper();
+                    if (response.IndexOf("##EOM") > -1)
+                        break;
+                }
+                serverSocket.Shutdown(SocketShutdown.Both);
+                serverSocket.Close();
+                serverSocket = null;
+                return response;
+            }
+            catch (Exception fout)
+            {
+                serverSocket = null;
+                return "";
+            }
         }
     }
 }
