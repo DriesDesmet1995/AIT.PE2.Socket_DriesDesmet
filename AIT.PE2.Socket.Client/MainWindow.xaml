@@ -34,9 +34,9 @@
 
                 <ListBox x:Name="lbFiles" Margin="28,332,512,284" SelectionChanged="lbFiles_SelectionChanged"/>
 
-                <Label x:Name="lblFolderName" Content="Folder Name :" HorizontalAlignment="Left" Margin="308,101,0,0" VerticalAlignment="Top" Width="428"/>
-                <Label x:Name="lblPath" Content="Full Path :" HorizontalAlignment="Left" Margin="308,131,0,0" VerticalAlignment="Top" Width="428"/>
-                <Label x:Name="lblParent" Content="Parent :" HorizontalAlignment="Left" Margin="308,163,0,0" VerticalAlignment="Top" Width="428"/>
+                <Label Content="Folder Name :" HorizontalAlignment="Left" Margin="308,101,0,0" VerticalAlignment="Top" Width="104"/>
+                <Label Content="Full Path :" HorizontalAlignment="Left" Margin="308,131,0,0" VerticalAlignment="Top" Width="104"/>
+                <Label Content="Parent :" HorizontalAlignment="Left" Margin="308,163,0,0" VerticalAlignment="Top" Width="104"/>
 
                 <Label x:Name="lblFileName" Content="File Name :" HorizontalAlignment="Left" Margin="306,334,0,0" VerticalAlignment="Top" Width="428"/>
                 <Label x:Name="lblPathFile" Content="Full Path :" HorizontalAlignment="Left" Margin="306,358,0,0" VerticalAlignment="Top" Width="428"/>
@@ -45,6 +45,9 @@
 
 
                 <Button x:Name="btnUpload" Content="File Upload" HorizontalAlignment="Left" Margin="308,489,0,0" VerticalAlignment="Top" Click="btnUpload_Click"/>
+                <Label x:Name="lblFolderName" Content=" " HorizontalAlignment="Left" Margin="443,101,0,0" VerticalAlignment="Top" Width="291"/>
+                <Label x:Name="lblPath" Content="" HorizontalAlignment="Left" Margin="443,131,0,0" VerticalAlignment="Top" Width="291"/>
+                <Label x:Name="lblParent" Content="" HorizontalAlignment="Left" Margin="443,163,0,0" VerticalAlignment="Top" Width="291"/>
 
             </Grid>
         </GroupBox>

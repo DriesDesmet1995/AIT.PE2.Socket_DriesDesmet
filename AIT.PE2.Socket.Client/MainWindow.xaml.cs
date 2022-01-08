@@ -66,6 +66,14 @@ namespace AIT.PE2.Socket.Client
 
         private void lbFolders_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            string path = lbFolders.SelectedItem.ToString();
+            string parent = System.IO.Directory.GetParent(path).FullName;
+            lblFolderName.Content = path.Substring(path.LastIndexOf('\\') + 1); ;
+            lblPath.Content = path;
+            lblParent.Content = parent;
+
+            GetAllFiles(path);
+            SendLocalInformation();
 
         }
 
@@ -219,6 +227,8 @@ namespace AIT.PE2.Socket.Client
         public void GetAllFolders(string path)
 
         {
+            lbFolders.Items.Clear();
+
             string[] dirs = Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly);
 
             foreach (var dir in dirs)
