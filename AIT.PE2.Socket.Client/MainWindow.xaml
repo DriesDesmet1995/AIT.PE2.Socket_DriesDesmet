@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AIT.PE2.Socket.Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1101" Width="800">
     <Grid>
+        <GroupBox Header="Server configuration" HorizontalAlignment="Left" Height="153" Margin="10,10,0,0" VerticalAlignment="Top" Width="770" >
+            <Grid HorizontalAlignment="Left" Width="770" Height="155">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="41*"/>
+                    <ColumnDefinition Width="344*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox x:Name="cmbIPs" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="46,10,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                <Label Content="IP : " FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Height="28" Margin="10,10,0,0" VerticalAlignment="Top" Width="31"/>
+                <Label Content="Port : " FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Height="28" Margin="128,7,0,0" VerticalAlignment="Top" Width="57" Grid.Column="1"/>
+                <ComboBox x:Name="cmbPorts" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="185,9,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                <Button x:Name="btnStartServer" Content="START" Background="ForestGreen" Foreground="White" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="20,56,0,0" VerticalAlignment="Top" Height="28" Width="81" Grid.ColumnSpan="2"/>
+                <Label Content="Username :" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Height="28" Margin="352,7,0,0" VerticalAlignment="Top" Width="90" Grid.Column="1"/>
+                <TextBox x:Name="txtUserName" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="447,13,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Fts" HorizontalAlignment="Left" Height="866" Margin="10,180,0,0" VerticalAlignment="Top" Width="770" >
+            <Grid HorizontalAlignment="Left" Width="770" Height="798">
+                <Label Content="Active Folder: " HorizontalAlignment="Left" Margin="28,24,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lblDirectory" Content="directory" HorizontalAlignment="Left" Margin="150,24,0,0" VerticalAlignment="Top" Width="524"/>
+                <Button x:Name="btnNavigate" Content="+" HorizontalAlignment="Left" Margin="689,27,0,0" VerticalAlignment="Top" Height="23"/>
+                <Label Content="Remote Folders (Double Click to navigate)" HorizontalAlignment="Left" Margin="28,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.389,0.204" Height="36" Width="363"/>
+                <ListBox x:Name="lbFolders" Margin="28,96,512,526"/>
+                <Label Content="Remote Files (Double Click to download)" HorizontalAlignment="Left" Margin="28,291,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.389,0.204" Height="36" Width="363"/>
+
+                <ListBox x:Name="lbFiles" Margin="28,332,512,284"/>
+
+                <Label x:Name="lblFolderName" Content="Folder Name :" HorizontalAlignment="Left" Margin="308,101,0,0" VerticalAlignment="Top" Width="428"/>
+                <Label x:Name="lblPath" Content="Full Path :" HorizontalAlignment="Left" Margin="308,131,0,0" VerticalAlignment="Top" Width="428"/>
+                <Label x:Name="lblParent" Content="Parent :" HorizontalAlignment="Left" Margin="308,163,0,0" VerticalAlignment="Top" Width="428"/>
+
+                <Label x:Name="lblFileName" Content="File Name :" HorizontalAlignment="Left" Margin="306,334,0,0" VerticalAlignment="Top" Width="428"/>
+                <Label x:Name="lblPathFile" Content="Full Path :" HorizontalAlignment="Left" Margin="306,358,0,0" VerticalAlignment="Top" Width="428"/>
+                <Label x:Name="lblFileSize" Content="File Size :" HorizontalAlignment="Left" Margin="306,382,0,0" VerticalAlignment="Top" Width="428"/>
+                <Label x:Name="lblDate" Content="Date :" HorizontalAlignment="Left" Margin="306,409,0,0" VerticalAlignment="Top" Width="428"/>
+
+
+                <Button x:Name="btnUpload" Content="File Upload" HorizontalAlignment="Left" Margin="308,489,0,0" VerticalAlignment="Top"/>
+
+            </Grid>
+        </GroupBox>
 
     </Grid>
 </Window>
