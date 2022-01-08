@@ -1,6 +1,8 @@
-﻿using System;
+﻿using AIT.PE2.Socket.Core.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,6 +27,11 @@ namespace AIT.PE2.Socket.Client
             InitializeComponent();
         }
 
+        #region Global variables
+        DirectoryServerService directoryService;
+        System.Net.Sockets.Socket serverSocket;
+        IPEndPoint serverEndpoint;
+        #endregion
         private void btnStartServer_Click(object sender, RoutedEventArgs e)
         {
 

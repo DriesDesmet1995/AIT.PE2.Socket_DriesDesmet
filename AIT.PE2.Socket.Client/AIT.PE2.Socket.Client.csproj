@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AIT.PE2.Socket.Core\AIT.PE2.Socket.Core.csproj" />
+  </ItemGroup>
+
 </Project>
