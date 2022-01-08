@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using System.Net.Sockets;
 using AIT.PE2.Socket.Core.Entities;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace AIT.PE2.Socket.Client
 {
@@ -43,8 +44,10 @@ namespace AIT.PE2.Socket.Client
                 txtUserName.Focus();
                 return;
             }
+            lblDirectory.Content = "C:\\howest".ToString(); //TestCode
             SaveConfig();
             SendLocalInformation();
+            GetAllFiles(lblDirectory.Content.ToString());
 
         }
 
@@ -197,6 +200,18 @@ namespace AIT.PE2.Socket.Client
                 grpFts.Visibility = Visibility.Hidden;
                 btnStartServer.Content = "Connect";
 
+            }
+        }
+
+        public void GetAllFiles(string path)
+
+        {
+            string[] allfiles = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
+
+            foreach (var file in allfiles)
+            {
+                FileInfo info = new FileInfo(file);
+                lbFiles.Items.Add(file);
             }
         }
     }
