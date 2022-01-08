@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace AIT.PE2.Socket.Core.Services
 {
-    public class DirectoryService
+    public class DirectoryServerService
     {
         public List<FTFolder> Folders { get; private set; }
-        public DirectoryService()
+        public DirectoryServerService()
         {
             Folders = new List<FTFolder>();
         }

@@ -33,7 +33,7 @@ namespace AIT.PE2.Socket.Server
         }
 
         #region Global variables
-        DirectoryService directoryService;
+        DirectoryServerService directoryService;
         System.Net.Sockets.Socket serverSocket;
         IPEndPoint serverEndpoint;
         bool serverOnline = false;
@@ -83,7 +83,7 @@ namespace AIT.PE2.Socket.Server
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            directoryService = new DirectoryService();
+            directoryService = new DirectoryServerService();
             StartupConfig();
         }
 
