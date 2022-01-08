@@ -173,12 +173,28 @@ namespace AIT.PE2.Socket.Client
                 directoryService.Folders = JsonConvert.DeserializeObject<List<FTFolder>>(response);
 
                 DoVisuals(true);
-                DisplayLocations();
             }
             else
             {
                 MessageBox.Show("Server unreachable");
                 DoVisuals(false);
+            }
+        }
+
+        private void DoVisuals(bool isConnected)
+        {
+            if (isConnected)
+            {
+                grpFts.Visibility = Visibility.Visible;
+                btnStartServer.Content = "Disconnect";
+
+
+            }
+            else
+            {
+                grpFts.Visibility = Visibility.Hidden;
+                btnStartServer.Content = "Connect";
+
             }
         }
     }
