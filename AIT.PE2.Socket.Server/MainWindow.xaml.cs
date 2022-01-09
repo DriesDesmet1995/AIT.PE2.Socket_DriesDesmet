@@ -37,6 +37,8 @@ namespace AIT.PE2.Socket.Server
         System.Net.Sockets.Socket serverSocket;
         IPEndPoint serverEndpoint;
         bool serverOnline = false;
+        string resultsConnected = "";
+        List<string> resultsPut = new List<string>();
         #endregion
         private void CmbIPs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -64,7 +66,6 @@ namespace AIT.PE2.Socket.Server
             cmbPorts.IsEnabled = false;
             txtPath.IsEnabled = false;
             txtCommunication.Text = null;
-            DisplayData();
 
             StartTheServer();
             StartListening();
@@ -94,14 +95,26 @@ namespace AIT.PE2.Socket.Server
 
 
         #region Methods
-        private void DisplayData()
+        private void DisplayData(string requestString)
         {
-            txtCommunication.Text = null;
             List<FTFolder> allFolders = directoryService.Folders;
+            if (requestString=="CONNECT")
+            {
+                resultsConnected += "Connected";
+            }
+
             foreach (var x in allFolders)
             {
-                txtCommunication.Text = txtCommunication.Text + "\n" + x.FolderName;
+                resultsPut.Add("\n"+x.FolderName);
             }
+            txtCommunication.Text = "";
+            txtCommunication.Text = resultsConnected;
+            foreach(string i in resultsPut)
+            {
+                txtCommunication.Text += i;
+            }
+
+
         }
 
         private void StartTheServer()
@@ -232,7 +245,32 @@ namespace AIT.PE2.Socket.Server
                 FTFolder fTFolder = JsonConvert.DeserializeObject<FTFolder>(parts[1]);
                 directoryService.AddFolder(fTFolder);
                 returnValue = SerializeList();
-                DisplayData();
+                DisplayData("CONNECT");
+                return returnValue + "##EOM";
+            }
+            else if (instruction.Length > 3 && instruction.Substring(0, 3) == "PUT")
+            {
+                parts = instruction.Split('|');
+                if (parts.Length != 2)
+                    return "Sorry ... I don't understand you ...##EOM";
+
+                FTFolder fTFolder = JsonConvert.DeserializeObject<FTFolder>(parts[1]);
+                directoryService.AddFolder(fTFolder);
+                returnValue = SerializeList();
+                DisplayData("PUT");
+                return returnValue + "##EOM";
+            }
+
+            else if (instruction.Length > 5 && instruction.Substring(0, 5) == "CLOSE")
+            {
+                parts = instruction.Split('|');
+                if (parts.Length != 2)
+                    return "Sorry ... I don't understand you ...##EOM";
+
+                FTFolder fTFolder = JsonConvert.DeserializeObject<FTFolder>(parts[1]);
+                directoryService.AddFolder(fTFolder);
+                returnValue = SerializeList();
+                DisplayData("CLOSE");
                 return returnValue + "##EOM";
             }
             return "Sorry ... I don't understand you ...##EOM";

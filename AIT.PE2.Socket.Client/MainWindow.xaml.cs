@@ -46,7 +46,7 @@ namespace AIT.PE2.Socket.Client
             }
             lblDirectory.Content = "C:\\howest"; //TestCode
             SaveConfig();
-            SendLocalInformation();
+            SendLocalInformation("CONNECT");
             GetAllFolders(lblDirectory.Content.ToString());
 
         }
@@ -72,7 +72,7 @@ namespace AIT.PE2.Socket.Client
             lblParent.Content = parent;
             lbFiles.Items.Clear();
             GetAllFiles(path);
-            SendLocalInformation();
+            SendLocalInformation("PUT");
 
         }
 
@@ -174,18 +174,29 @@ namespace AIT.PE2.Socket.Client
             }
         }
 
-        private void SendLocalInformation()
+        private void SendLocalInformation(string requestString)
         {
             string foldername = lblFolderName.Content.ToString();
             string folderPath = lblPath.Content.ToString();
             string parentPath = lblParent.Content.ToString();
             ICollection<FTFile> filesInFolder = new List<FTFile>();
+            string message = "";
 
             FTFolder fTFolder = new FTFolder(foldername,folderPath,parentPath,filesInFolder);
 
             string json = JsonConvert.SerializeObject(fTFolder);
-
-            string message = "CONNECT|" + json + "##EOM";
+            if (requestString == "CONNECT")
+            {
+                message = "CONNECT|" + json + "##EOM";
+            }
+            if (requestString == "CLOSE")
+            {
+                message = "CLOSE|" + json + "##EOM";
+            }
+            if (requestString == "PUT")
+            {
+                message = "PUT|" + json + "##EOM";
+            }
             string response = SendMessageToServer(message);
             if (response != "")
             {
