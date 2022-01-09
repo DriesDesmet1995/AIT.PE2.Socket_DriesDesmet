@@ -102,11 +102,35 @@ namespace AIT.PE2.Socket.Server
             {
                 resultsConnected += "Connected";
             }
-
-            foreach (var x in allFolders)
+            if (requestString == "PUT")
             {
-                resultsPut.Add("\n"+x.FolderName);
+                foreach (var x in allFolders)
+                {
+                    resultsPut.Add("\n" + x.FolderName);
+                }
             }
+            if (requestString == "CLOSE")
+            {
+                resultsConnected += "Closed Connection";
+
+            }
+            if (requestString == "CDUP")
+            {
+
+            }
+            if (requestString == "CDDIR")
+            {
+
+            }
+            if (requestString == "MKDIR")
+            {
+
+            }
+            if (requestString == "GET")
+            {
+
+            }
+
             txtCommunication.Text = "";
             txtCommunication.Text = resultsConnected;
             foreach(string i in resultsPut)
@@ -271,6 +295,54 @@ namespace AIT.PE2.Socket.Server
                 directoryService.AddFolder(fTFolder);
                 returnValue = SerializeList();
                 DisplayData("CLOSE");
+                return returnValue + "##EOM";
+            }
+            else if (instruction.Length > 4 && instruction.Substring(0, 4) == "CDUP")
+            {
+                parts = instruction.Split('|');
+                if (parts.Length != 2)
+                    return "Sorry ... I don't understand you ...##EOM";
+
+                FTFolder fTFolder = JsonConvert.DeserializeObject<FTFolder>(parts[1]);
+                directoryService.AddFolder(fTFolder);
+                returnValue = SerializeList();
+                DisplayData("CDUP");
+                return returnValue + "##EOM";
+            }
+            else if (instruction.Length > 5 && instruction.Substring(0, 5) == "CDDIR")
+            {
+                parts = instruction.Split('|');
+                if (parts.Length != 2)
+                    return "Sorry ... I don't understand you ...##EOM";
+
+                FTFolder fTFolder = JsonConvert.DeserializeObject<FTFolder>(parts[1]);
+                directoryService.AddFolder(fTFolder);
+                returnValue = SerializeList();
+                DisplayData("CDDIR");
+                return returnValue + "##EOM";
+            }
+            else if (instruction.Length > 5 && instruction.Substring(0, 5) == "MKDIR")
+            {
+                parts = instruction.Split('|');
+                if (parts.Length != 2)
+                    return "Sorry ... I don't understand you ...##EOM";
+
+                FTFolder fTFolder = JsonConvert.DeserializeObject<FTFolder>(parts[1]);
+                directoryService.AddFolder(fTFolder);
+                returnValue = SerializeList();
+                DisplayData("MKDIR");
+                return returnValue + "##EOM";
+            }
+            else if (instruction.Length > 3 && instruction.Substring(0, 3) == "GET")
+            {
+                parts = instruction.Split('|');
+                if (parts.Length != 2)
+                    return "Sorry ... I don't understand you ...##EOM";
+
+                FTFolder fTFolder = JsonConvert.DeserializeObject<FTFolder>(parts[1]);
+                directoryService.AddFolder(fTFolder);
+                returnValue = SerializeList();
+                DisplayData("GET");
                 return returnValue + "##EOM";
             }
             return "Sorry ... I don't understand you ...##EOM";

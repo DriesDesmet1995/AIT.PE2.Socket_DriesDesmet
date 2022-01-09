@@ -211,6 +211,22 @@ namespace AIT.PE2.Socket.Client
             {
                 message = "PUT|" + json + "##EOM";
             }
+            if (requestString == "GET")
+            {
+                message = "GET|" + json + "##EOM";
+            }
+            if (requestString == "MKDIR")
+            {
+                message = "MKDIR|" + json + "##EOM";
+            }
+            if (requestString == "CDUP")
+            {
+                message = "CDUP|" + json + "##EOM";
+            }
+            if (requestString == "CDDIR")
+            {
+                message = "CDDIR|" + json + "##EOM";
+            }
             string response = SendMessageToServer(message);
             if (response != "")
             {
