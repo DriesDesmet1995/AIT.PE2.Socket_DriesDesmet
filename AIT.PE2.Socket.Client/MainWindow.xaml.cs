@@ -44,10 +44,9 @@ namespace AIT.PE2.Socket.Client
                 txtUserName.Focus();
                 return;
             }
-            lblDirectory.Content = "C:\\howest".ToString(); //TestCode
+            lblDirectory.Content = "C:\\howest"; //TestCode
             SaveConfig();
             SendLocalInformation();
-            GetAllFiles(lblDirectory.Content.ToString());
             GetAllFolders(lblDirectory.Content.ToString());
 
         }
@@ -71,6 +70,7 @@ namespace AIT.PE2.Socket.Client
             lblFolderName.Content = path.Substring(path.LastIndexOf('\\') + 1); ;
             lblPath.Content = path;
             lblParent.Content = parent;
+            lbFiles.Items.Clear();
             GetAllFiles(path);
             SendLocalInformation();
 
@@ -236,11 +236,20 @@ namespace AIT.PE2.Socket.Client
             string[] dirs = Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly);
 
 
-            lbFolders.Items.Clear();
             foreach (var dir in dirs)
             {
                 FileInfo info = new FileInfo(dir);
                 lbFolders.Items.Add(dir);
+            }
+            GetAllFiles(lblDirectory.Content.ToString());
+
+        }
+
+        private void lbFiles_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            using (var client = new WebClient())
+            {
+                client.DownloadFile(lblPathFile.Content.ToString(),lblFileName.Content.ToString());
             }
         }
     }

@@ -32,7 +32,7 @@
                 <ListBox x:Name="lbFolders" Margin="28,96,512,526" SelectionChanged="lbFolders_SelectionChanged"/>
                 <Label Content="Remote Files (Double Click to download)" HorizontalAlignment="Left" Margin="28,291,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.389,0.204" Height="36" Width="363"/>
 
-                <ListBox x:Name="lbFiles" Margin="28,332,512,284" SelectionChanged="lbFiles_SelectionChanged"/>
+                <ListBox x:Name="lbFiles" Margin="28,332,512,284" SelectionChanged="lbFiles_SelectionChanged" MouseDoubleClick="lbFiles_MouseDoubleClick"/>
 
                 <Label Content="Folder Name :" HorizontalAlignment="Left" Margin="308,101,0,0" VerticalAlignment="Top" Width="104"/>
                 <Label Content="Full Path :" HorizontalAlignment="Left" Margin="308,131,0,0" VerticalAlignment="Top" Width="104"/>
