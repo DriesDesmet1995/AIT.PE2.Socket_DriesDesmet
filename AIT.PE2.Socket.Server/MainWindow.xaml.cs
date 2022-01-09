@@ -63,7 +63,7 @@ namespace AIT.PE2.Socket.Server
             cmbIPs.IsEnabled = false;
             cmbPorts.IsEnabled = false;
             txtPath.IsEnabled = false;
-            grdUsers.ItemsSource = null;
+            txtCommunication.Text = null;
             DisplayData();
 
             StartTheServer();
@@ -96,8 +96,12 @@ namespace AIT.PE2.Socket.Server
         #region Methods
         private void DisplayData()
         {
-            grdUsers.ItemsSource = null;
-            grdUsers.ItemsSource = directoryService.Folders;
+            txtCommunication.Text = null;
+            List<FTFolder> allFolders = directoryService.Folders;
+            foreach (var x in allFolders)
+            {
+                txtCommunication.Text = txtCommunication.Text + "\n" + x.FolderName;
+            }
         }
 
         private void StartTheServer()
@@ -219,7 +223,7 @@ namespace AIT.PE2.Socket.Server
                 }
 
             }
-            else if (instruction.Length > 3 && instruction.Substring(0, 3) == "PUT")
+            else if (instruction.Length > 7 && instruction.Substring(0, 7) == "CONNECT")
             {
                 parts = instruction.Split('|');
                 if (parts.Length != 2)

@@ -185,7 +185,7 @@ namespace AIT.PE2.Socket.Client
 
             string json = JsonConvert.SerializeObject(fTFolder);
 
-            string message = "PUT|" + json + "##EOM";
+            string message = "CONNECT|" + json + "##EOM";
             string response = SendMessageToServer(message);
             if (response != "")
             {
