@@ -36,18 +36,32 @@ namespace AIT.PE2.Socket.Client
         DirectoryClientService directoryService;
         System.Net.Sockets.Socket serverSocket;
         IPEndPoint serverEndpoint;
+        bool serverOnline = false;
         #endregion
         private void btnStartServer_Click(object sender, RoutedEventArgs e)
         {
-            if (txtUserName.Text == null)
+            if(serverOnline==false)
             {
-                txtUserName.Focus();
-                return;
+                if (txtUserName.Text == null)
+                {
+                    txtUserName.Focus();
+                    return;
+                }
+                lblDirectory.Content = "C:\\howest"; //TestCode
+                serverOnline = true;
+                SaveConfig();
+                SendLocalInformation("CONNECT");
+                GetAllFolders(lblDirectory.Content.ToString());
             }
-            lblDirectory.Content = "C:\\howest"; //TestCode
-            SaveConfig();
-            SendLocalInformation("CONNECT");
-            GetAllFolders(lblDirectory.Content.ToString());
+
+            if(serverOnline==true)
+            {
+                serverOnline = false;
+                grpFts.Visibility = Visibility.Hidden;
+                SendLocalInformation("CLOSE");
+
+            }
+
 
         }
 
